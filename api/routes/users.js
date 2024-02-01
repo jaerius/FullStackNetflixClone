@@ -45,7 +45,7 @@ router.delete("/:id", verify, async (req,res) => {
 router.get("/find/:id", async (req,res) => {
     try{
         const user = await User.findById(req.params.id);
-        const { password, ...info } = user._doc
+        const { password, ...info } = user._doc // _doc은 Mongoose 모델 인스턴스의 내부 속성으로, 실제 데이터베이스 문서의 내용을 담고 있습니다.
         res.status(200).json(info);
     } catch(err) {
         res.status(500).json(err);
@@ -55,7 +55,7 @@ router.get("/find/:id", async (req,res) => {
 //get all
 
 router.get("/", verify, async (req,res) => {
-    const query = req.query.new; //URL 쿼리 스트링에서 new 키의 값을 query 변수에 저장합니다. 예를 들어, /new?true 요청에서 query는 true가 됩니다.
+    const query = req.query.new; //URL 쿼리 스트링에서 new 키의 값을 query 변수에 저장합니다. 예를 들어, /new?true 요청에서 query는 true가 됩니다. 
     if (req.user.isAdmin) {
         try {
             const users = query ? await User.find().limit(10) : await User.find();
