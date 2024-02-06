@@ -5,6 +5,7 @@
     .category{
         position: absolute; // 가장 가까운 조상 요소(position이 relative, absolute, fixed, stidcy로 설정된 조상요소)에 대해 상대적으로 배치
         //이렇게 하면 모든 요소 위치를 top, left, right, bottom으로 표시할 수 있음
+        // absoulte를 하면 정상적인 문서흐름에서 벗어나는 것이기 때문에 주의해야함
         top: 80px;
         left: 50px;
         font-size: 30px;
